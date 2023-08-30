@@ -8,14 +8,10 @@
 
     <ItemGroup>
       <PackageReference Include="Allure.NUnit" Version="2.9.5-preview.1" />
+      <PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.7.2" />
       <PackageReference Include="Selenium.WebDriver" Version="4.11.0" />
       <PackageReference Include="Selenium.WebDriver.ChromeDriver" Version="116.0.5845.9600-beta" />
     </ItemGroup>
 
-    <ItemGroup>
-      <Folder Include="PageObject\" />
-      <Folder Include="Suites\" />
-      <Folder Include="Utilities\" />
-    </ItemGroup>
 
 </Project>
