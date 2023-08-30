@@ -2,6 +2,7 @@
 using NUnit.Framework;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
+using OpenQA.Selenium.Interactions;
 using OpenQA.Selenium.Remote;
 
 namespace ClassLibrary3
@@ -14,18 +15,10 @@ namespace ClassLibrary3
         {
             driver = StartBrowser();
         }
-        private string remoteWdUri = "http://localhost:4444/";
-
     
         private ChromeDriver StartBrowser()
         {
-            ChromeOptions options = new ChromeOptions();
-            var nameSession = TestContext.CurrentContext.Test.Name;
-
-            TimeSpan waiting = TimeSpan.FromMinutes(10);
-
-            var driver = new ChromeDriver();
-            return driver;
+            return new ChromeDriver();;
         }
 
         public void Quit()
@@ -46,7 +39,6 @@ namespace ClassLibrary3
         }
         #endregion
         
-        
         public IWebElement GetEl(By locator, int secondsToWait = 10)
         {
             while (secondsToWait > 0)
@@ -65,33 +57,102 @@ namespace ClassLibrary3
             throw new NoSuchElementException($"На странице не найден элемент: {locator.ToString()};");
         }
         
-        public void AttachScreenToReport()
+        public void ScrollToElement(By locator)
         {
-            byte[] img = TakeScreenshot();
-
             try
             {
-                Random rnd = new Random();
-                AllureLifecycle.Instance.AddAttachment($"ScreenShot-{DateTime.Now.Hour.ToString()}-{DateTime.Now.Minute.ToString()}-{DateTime.Now.Second.ToString()}" +
-                                                       $"-{rnd.Next(100, 999).ToString()}", "image/png", img, "png");
+                Actions action = new Actions(driver);
+                IWebElement element = GetEl(locator, 30);
+                action.ScrollToElement(element).Perform();
             }
-            catch
+            catch (Exception)
             {
-
+                System.Threading.Thread.Sleep(1000);
+                throw new Exception($"Элемент {locator.ToString()} не найден!");
             }
         }
         
-        private byte[] TakeScreenshot()
+        public IWebElement FillField(By locator, string value, int secondsToWait = 10)
+        {
+            while (secondsToWait > 0)
+            {
+                try
+                {
+                    IWebElement element = driver.FindElement(locator);
+                    
+                    element.SendKeys(value);
+                    
+                    return element;
+                }
+                catch (Exception)
+                {
+                    System.Threading.Thread.Sleep(1000);
+                    secondsToWait -= 1;
+                }
+            }
+            throw new Exception($"Element {locator.ToString()} not fillable!");
+        }
+        
+        public void WaitUntilPageIsLoaded()
+        {
+            bool areEqual = false;
+            while (!areEqual)
+            {
+                var old_pagesource = driver.PageSource;
+                Thread.Sleep(500);
+                var new_pagesource = driver.PageSource;
+
+                if (old_pagesource == new_pagesource)
+                {
+                    areEqual = true;
+                }
+            }
+        }
+        public IWebElement Click(By locator, int secondsToWait = 10)
+        {
+            while (secondsToWait > 0)
+            {
+                try
+                {
+                    IWebElement element = driver.FindElement(locator);
+                    element.Click();
+                    WaitUntilPageIsLoaded();
+                    return element;
+                }
+                catch (Exception)
+                {
+                    System.Threading.Thread.Sleep(1000);
+                    secondsToWait -= 1;
+                }
+            }
+            throw new Exception($"Element {locator.ToString()} not clickable!");
+        }
+        
+        public IReadOnlyCollection<IWebElement> GetEls(By locator, int secondsToWait = 3)
+        {
+            while (secondsToWait > 0)
+            {
+                IReadOnlyCollection<IWebElement> elements = driver.FindElements(locator);
+                if (elements.Count > 0)
+                {
+                    return elements;
+                }
+                Thread.Sleep(1000);
+                secondsToWait -= 1;
+            }
+            throw new NoSuchElementException($"На странице не найден элемент: {locator.ToString()};");
+        }
+        
+        public int GetElsCount(By locator, int secToWait = 3)
         {
             try
             {
-                Screenshot ss = ((ITakesScreenshot)driver).GetScreenshot();
-                byte[] screenshotAsByteArray = ss.AsByteArray;
-                return screenshotAsByteArray;
+                IReadOnlyCollection<IWebElement> elements = GetEls(locator, secToWait);
+                return elements.Count;
             }
-            catch (Exception e)
+            catch (NoSuchElementException)
             {
-                throw new Exception($"Не удалось сделать скриншот; {e.Message}");
+                return 0;
             }
         }
     }
