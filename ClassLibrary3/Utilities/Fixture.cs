@@ -20,6 +20,7 @@ public class Fixture:IDisposable
             Thread.Sleep(2500);
             Driver.GetEl(By.XPath("//input[@type = 'tel']")).SendKeys(username);
             Driver.GetEl(By.XPath("//input[@type = 'password']")).SendKeys(password);
+            Thread.Sleep(3000);
             Driver.GetEl(By.XPath("//*[@elementid = 'login-lk']")).Click();
         }
         catch (Exception e)
@@ -27,19 +28,7 @@ public class Fixture:IDisposable
             throw new ElementNotVisibleException($"Не удалось найти элемент на странице: {e.Message}");
         }
     }
-
-    public void ChooseOrganization()
-    {
-        try
-        {
-
-        }
-        catch (Exception e)
-        {
-            Console.WriteLine(e);
-            throw;
-        }
-    }
+    
     public void Dispose()
     {
         Driver.Quit();
