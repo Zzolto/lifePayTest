@@ -126,6 +126,27 @@
         "runtime": {
           "lib/netstandard2.0/nunit.engine.api.dll": {}
         }
+      },
+      "Selenium.WebDriver/4.11.0": {
+        "type": "package",
+        "dependencies": {
+          "Newtonsoft.Json": "13.0.1"
+        },
+        "compile": {
+          "lib/net6.0/WebDriver.dll": {}
+        },
+        "runtime": {
+          "lib/net6.0/WebDriver.dll": {}
+        },
+        "build": {
+          "buildTransitive/Selenium.WebDriver.targets": {}
+        }
+      },
+      "Selenium.WebDriver.ChromeDriver/116.0.5845.9600-beta": {
+        "type": "package",
+        "build": {
+          "build/Selenium.WebDriver.ChromeDriver.targets": {}
+        }
       }
     }
   },
@@ -422,11 +443,61 @@
         "nunit.engine.api.3.15.2.nupkg.sha512",
         "nunit.engine.api.nuspec"
       ]
+    },
+    "Selenium.WebDriver/4.11.0": {
+      "sha512": "V8o+Nvi9/3Ix12ZzMGg+fI7sfu+HrflZkMGq8Orr+j0INbfpEEyM6KR9oaaHlm0WUXcn7dTYwyWrJxYsi6eniw==",
+      "type": "package",
+      "path": "selenium.webdriver/4.11.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "build/Selenium.WebDriver.targets",
+        "buildTransitive/Selenium.WebDriver.targets",
+        "images/icon.png",
+        "lib/net45/WebDriver.dll",
+        "lib/net46/WebDriver.dll",
+        "lib/net47/WebDriver.dll",
+        "lib/net48/WebDriver.dll",
+        "lib/net5.0/WebDriver.dll",
+        "lib/net6.0/WebDriver.dll",
+        "lib/netstandard2.0/WebDriver.dll",
+        "lib/netstandard2.1/WebDriver.dll",
+        "manager/linux/selenium-manager",
+        "manager/macos/selenium-manager",
+        "manager/windows/selenium-manager.exe",
+        "selenium.webdriver.4.11.0.nupkg.sha512",
+        "selenium.webdriver.nuspec"
+      ]
+    },
+    "Selenium.WebDriver.ChromeDriver/116.0.5845.9600-beta": {
+      "sha512": "Q/NhTk64WolIbQCAcpLKeMqroeWctQjZF5GBQv+FhhRfzGWUbkjKuIF9nBQRjSWvrqknOjrVLS+a7tDuv9NTRg==",
+      "type": "package",
+      "path": "selenium.webdriver.chromedriver/116.0.5845.9600-beta",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "README.md",
+        "build/DefinePropertiesChromeDriver.targets",
+        "build/Selenium.WebDriver.ChromeDriver.targets",
+        "driver/linux64/LICENSE.chromedriver",
+        "driver/linux64/chromedriver",
+        "driver/mac64/LICENSE.chromedriver",
+        "driver/mac64/chromedriver",
+        "driver/mac64arm/LICENSE.chromedriver",
+        "driver/mac64arm/chromedriver",
+        "driver/win32/LICENSE.chromedriver",
+        "driver/win32/chromedriver.exe",
+        "nupkg-icon.png",
+        "selenium.webdriver.chromedriver.116.0.5845.9600-beta.nupkg.sha512",
+        "selenium.webdriver.chromedriver.nuspec"
+      ]
     }
   },
   "projectFileDependencyGroups": {
     "net7.0": [
-      "Allure.NUnit >= 2.9.5-preview.1"
+      "Allure.NUnit >= 2.9.5-preview.1",
+      "Selenium.WebDriver >= 4.11.0",
+      "Selenium.WebDriver.ChromeDriver >= 116.0.5845.9600-beta"
     ]
   },
   "packageFolders": {
@@ -469,6 +540,14 @@
           "Allure.NUnit": {
             "target": "Package",
             "version": "[2.9.5-preview.1, )"
+          },
+          "Selenium.WebDriver": {
+            "target": "Package",
+            "version": "[4.11.0, )"
+          },
+          "Selenium.WebDriver.ChromeDriver": {
+            "target": "Package",
+            "version": "[116.0.5845.9600-beta, )"
           }
         },
         "imports": [
