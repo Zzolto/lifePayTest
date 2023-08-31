@@ -2,7 +2,7 @@
 
 public class OrdersPage:WebPage
 {
-    public OrdersPage(BaseDriver baseDriver) : base(baseDriver, "")
+    public OrdersPage(BaseDriver baseDriver) : base(baseDriver, "Заказы", "Все заказы")
     {
         
     }

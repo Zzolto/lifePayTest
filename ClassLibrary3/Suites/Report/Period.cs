@@ -7,6 +7,11 @@ using OpenQA.Selenium;
 namespace ClassLibrary3.Suites.Report
 {
     [Parallelizable]
+    [AllureParentSuite("[Отчеты]")]
+    [AllureSuite("[Период]")]
+    [Category("Отчеты")]
+    [Category("Период")]
+    [Category("Все")]
     [TestFixture]
     [AllureNUnit]
     public class Period:FixtureHelper
@@ -26,8 +31,6 @@ namespace ClassLibrary3.Suites.Report
         [Author("Zolto")]
         public void _00_Check_WelcomeMessage()
         {
-            page.OpenPage();
-            
             page.Assert_HasLocator(By.XPath("//*[text() = 'Добро пожаловать, Гунзенов Золто']"));
         }
         

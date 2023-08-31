@@ -1,2 +1,4 @@
-ClassLibrary3/bin/
-ClassLibrary3/obj/
+bin/
+obj/
+.idea/
+allure-2.24.0/
