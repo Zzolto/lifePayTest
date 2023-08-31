@@ -1,6 +1,7 @@
 ﻿<wpf:ResourceDictionary xml:space="preserve" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:s="clr-namespace:System;assembly=mscorlib" xmlns:ss="urn:shemas-jetbrains-com:settings-storage-xaml" xmlns:wpf="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
-	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=ff3610e7_002D97cc_002D4c8d_002Db4f5_002D5b77f85ec810/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" IsActive="True" Name="_01_Create_Order" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;&#xD;
-  &lt;TestAncestor&gt;&#xD;
-    &lt;TestId&gt;NUnit3x::2DBC42A4-BFFB-4081-A0CE-45EEC7CA6D45::net7.0::ClassLibrary3.Suites.Orders.Orders._01_Create_Order&lt;/TestId&gt;&#xD;
-  &lt;/TestAncestor&gt;&#xD;
+	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=88605bf3_002D0e00_002D47de_002D822e_002Dc20a236e5706/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" IsActive="True" Name="Session" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;&#xD;
+  &lt;And&gt;&#xD;
+    &lt;Namespace&gt;ClassLibrary3.Suites&lt;/Namespace&gt;&#xD;
+    &lt;Project Location="D:\RiderProject\ClassLibrary3\ClassLibrary3" Presentation="&amp;lt;ClassLibrary3&amp;gt;" /&gt;&#xD;
+  &lt;/And&gt;&#xD;
 &lt;/SessionState&gt;</s:String></wpf:ResourceDictionary>
