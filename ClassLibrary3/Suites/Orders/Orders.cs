@@ -21,6 +21,7 @@ public class Orders:FixtureHelper
     {
         base.SetUp();
         page = new OrdersPage(fixture.Driver);
+        page.LogIn(Utilities.Phone, Utilities.Password);
     }
 
     [Order(0)]
@@ -28,7 +29,7 @@ public class Orders:FixtureHelper
     [Author("Zolto")]
     public void _00_Check_WelcomeMessage()
     {
-        page.CheckWelcomeMessage(fixture.welcomeMessage);
+        page.CheckWelcomeMessage(page.welcomeMessage);
         
         page.ChooseOrganization("Магазин_I8xm");
 

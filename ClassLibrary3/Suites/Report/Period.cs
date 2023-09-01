@@ -22,6 +22,7 @@ namespace ClassLibrary3.Suites.Report
         {
             base.SetUp();
             page = new ReportWorkPlacePagePeriod(fixture.Driver);
+            page.LogIn(Utilities.Phone, Utilities.Password);
             page.ChooseOrganization("Магазин_I8xm");
 
         }
