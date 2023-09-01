@@ -11,6 +11,8 @@ namespace ClassLibrary3
         private string path;
         private string pageName;
 
+        public string welcomeMessage { get; private set; }
+
         public WebPage(BaseDriver baseDriver,string path, string pageName)
         {
             BaseDriver = baseDriver;
@@ -18,9 +20,28 @@ namespace ClassLibrary3
             this.pageName = pageName;
         }
 
-        /// <summary>
-        /// Открывает страницу по заданному пути path
-        /// </summary>
+        public void Assert_HasRecord(string name, bool contains = false)
+        {
+            AllureLifecycle.Instance.WrapInStep(() =>
+                {
+                    Assert.True(HasRecord(null, name, contains), $"Не обнаружена запись: {name}");
+
+                }, $"Проверка наличия записи {name}");
+        }
+        
+        public bool HasRecord(By parent, string name, bool contains = false)
+        {
+            By recordPath;
+
+            if (contains)
+                recordPath = By.XPath($"//div[@class = 'table__wrapper']//*[text()[contains(.,'{name}')]]");
+            else
+                recordPath = By.XPath($"//div[@class = 'table__wrapper']//*[text() = '{name}']");
+            
+            int count = BaseDriver.GetElsCount(recordPath, 15);
+
+            return count > 0;
+        }
         public void OpenPage(string customPath = null)
         {
             AllureLifecycle.Instance.WrapInStep(() =>
@@ -38,6 +59,25 @@ namespace ClassLibrary3
                 }, $"Открытие страницы '{pageName}'");
         }
         
+        public void LogIn(string username, string password)
+        {
+            try
+            {
+                BaseDriver.GoToUrl("login");
+                Thread.Sleep(2500);
+                welcomeMessage = BaseDriver.GetEl(By.XPath("//*[@class = 'header']//h2")).Text;
+                Thread.Sleep(2500);
+                BaseDriver.GetEl(By.XPath("//input[@type = 'tel']")).SendKeys(username);
+                Thread.Sleep(1000);
+                BaseDriver.GetEl(By.XPath("//input[@type = 'password']")).SendKeys(password);
+                Thread.Sleep(3000);
+                BaseDriver.GetEl(By.XPath("//*[@elementid = 'login-lk']")).Click();
+            }
+            catch (Exception e)
+            {
+                throw new ElementNotVisibleException($"Не удалось найти элемент на странице: {e.Message}");
+            }
+        }
         public void CheckWelcomeMessage(string welcomeMessage)
         {
             var currentTime = DateTime.Now.Hour;
