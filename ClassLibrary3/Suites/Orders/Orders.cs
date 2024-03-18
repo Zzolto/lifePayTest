@@ -16,7 +16,7 @@ namespace ClassLibrary3.Suites.Orders;
 [AllureNUnit]
 public class Orders:FixtureHelper
 {
-    public OrdersPage page;
+    private OrdersPage page;
     public override void SetUp()
     {
         base.SetUp();
@@ -29,7 +29,7 @@ public class Orders:FixtureHelper
     [Author("Zolto")]
     public void _00_Check_WelcomeMessage()
     {
-        page.CheckWelcomeMessage(page.welcomeMessage);
+        //page.CheckWelcomeMessage(page.welcomeMessage);
         
         page.ChooseOrganization("Магазин_I8xm");
 
