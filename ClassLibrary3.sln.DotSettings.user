@@ -4,10 +4,5 @@
     &lt;TestId&gt;NUnit3x::2DBC42A4-BFFB-4081-A0CE-45EEC7CA6D45::net7.0::ClassLibrary3.LoginPage._00_DoLogin()&lt;/TestId&gt;&#xD;
   &lt;/TestAncestor&gt;&#xD;
 &lt;/SessionState&gt;</s:String>
-	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=853b9e8d_002D669b_002D4139_002D8c5a_002D1631b5bbe0fd/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" IsActive="True" Name="_00_AddCategory" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;&#xD;
-  &lt;TestAncestor&gt;&#xD;
-    &lt;TestId&gt;NUnit3x::2DBC42A4-BFFB-4081-A0CE-45EEC7CA6D45::net7.0::ClassLibrary3.Suites.Catalogcategories.Categories._00_AddCategory&lt;/TestId&gt;&#xD;
-    &lt;TestId&gt;NUnit3x::2DBC42A4-BFFB-4081-A0CE-45EEC7CA6D45::net7.0::ClassLibrary3.Suites.Orders.Orders&lt;/TestId&gt;&#xD;
-  &lt;/TestAncestor&gt;&#xD;
-&lt;/SessionState&gt;</s:String>
+	
 	</wpf:ResourceDictionary>
