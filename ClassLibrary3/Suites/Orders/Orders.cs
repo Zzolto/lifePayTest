@@ -10,7 +10,7 @@ namespace ClassLibrary3.Suites.Orders;
 [AllureParentSuite("[Заказы]")]
 [AllureSuite("[Все заказы]")]
 [Category("Заказы")]
-[Category("Все_зазазы")]
+[Category("Все_заказы")]
 [Category("Все")]
 [TestFixture]
 [AllureNUnit]
