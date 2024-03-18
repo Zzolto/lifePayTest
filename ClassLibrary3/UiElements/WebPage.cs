@@ -63,7 +63,7 @@ namespace ClassLibrary3
         {
             try
             {
-                BaseDriver.GoToUrl("login");
+                BaseDriver.GoToUrl("auth/login");
                 Thread.Sleep(2500);
                 welcomeMessage = BaseDriver.GetEl(By.XPath("//*[@class = 'header']//h2")).Text;
                 Thread.Sleep(2500);
